@@ -55,6 +55,9 @@ public class WebSeriesServlet extends HttpServlet {
 		writer.write("<html>");
 		writer.write("<body>");
 		writer.write("<span style='color: red'> ");
+		writer.write("<h1 style='color: green'>");
+		writer.write("successful");
+		writer.write("</h1>");
 		writer.write(" **seriesName : " + seriesName);
 		writer.write(" **seriesLang : " + seriesLang);
 		writer.write(" **seriesEpisodes : " + seriesEpisodes);

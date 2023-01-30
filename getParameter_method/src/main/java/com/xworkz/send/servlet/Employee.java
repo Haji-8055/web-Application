@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(loadOnStartup = 1, urlPatterns = "/work")
+@WebServlet(loadOnStartup = 3, urlPatterns = "/work")
 public class Employee extends HttpServlet {
 
 	public Employee() {

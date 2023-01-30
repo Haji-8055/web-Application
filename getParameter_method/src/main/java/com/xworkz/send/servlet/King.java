@@ -22,7 +22,7 @@ public class King extends HttpServlet {
 	}
 
 	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		
 		String kingName = req.getParameter("kingName");
@@ -44,6 +44,9 @@ public class King extends HttpServlet {
 		writer.write("<html>");
 		writer.write("<body>");
 		writer.write("<span style='color: red'> ");
+		writer.write("<h1 style='color: green'>");
+		writer.write("successful");
+		writer.write("</h1>");
 		writer.write(" **kingName : " + kingName);
 		writer.write(" **kingRegion : " + kingRegion);
 		writer.write(" **kingQueens : " + kingQueens);
