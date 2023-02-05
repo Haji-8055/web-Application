@@ -32,7 +32,7 @@ public class SpringWebInit extends AbstractAnnotationConfigDispatcherServletInit
 
 	@Override
 	protected String[] getServletMappings() {
-		System.out.println("running getRootConfigClasses method....");
+		System.out.println("running getServletMappings method....");
 		String[] arr = { "/" };
 		System.out.println("printing  : " + Arrays.toString(arr));
 

@@ -9,15 +9,16 @@ import com.xworkz.model.dto.CasinoDTO;
 
 @Component
 @RequestMapping("/play")
-public class Casino {
+public class CasinoController {
 
-	public Casino() {
-		System.out.println("created Casino....");
+	public CasinoController() {
+		System.out.println("created CasinoController....");
 	}
 	
 
 	@PostMapping
 	public String onSubmit(CasinoDTO dto ,Model model) {
+		
 		model.addAttribute("casinoName", dto.getCasinoName());
 		model.addAttribute("cruise", dto.getCruise());
 		model.addAttribute("entryFee", dto.getEntryFee());

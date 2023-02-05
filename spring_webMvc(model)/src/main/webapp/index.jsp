@@ -31,7 +31,7 @@
 
 					
 
-					<li class="nav-item"><a class="nav-link" href="beach.jsp">beach
+					<li class="nav-item"><a class="nav-link" href="Beach.jsp">beach
 							form</a></li>
 					<li class="nav-item"><a class="nav-link" href="Casino.jsp">casino form</a></li>
 				</ul>
