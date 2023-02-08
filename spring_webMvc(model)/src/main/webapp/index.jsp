@@ -17,7 +17,7 @@
 	<nav class="navbar navbar-expand-lg  navbar-dark bg-dark">
 		<div class="container-fluid">
 			<a class="navbar-brand"> <img
-				src="https://x-workz.in/static/media/Logo.cf195593dc1b3f921369.png"
+				src="xworkz.png"
 				alt="Bootstrap" width="120" height="60"></a>
 			<button class="navbar-toggler" type="button"
 				data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"

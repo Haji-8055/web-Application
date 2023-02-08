@@ -1,4 +1,4 @@
-package com.xworkz.model.configuration;
+package com.xworkz.haji.configuration;
 
 import java.util.Arrays;
 
@@ -42,6 +42,7 @@ public class SpringWebInit extends AbstractAnnotationConfigDispatcherServletInit
 	@Override
 	public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
 		System.out.println("running configureDefaultServletHandling method...........");
+		
 		configurer.enable();
 	}
 
