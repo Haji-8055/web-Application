@@ -56,13 +56,17 @@
 			<option>karnataka</option>
 			<option>maharsahtra</option>
 			<option>delhi</option>
-		</select> party <select class="form-select" aria-label="Default select example"
+		</select> 
+		
+		party <select class="form-select" aria-label="Default select example"
 			name="party">
 			<option value="">select party</option>
 			<option>bjp</option>
 			<option>congress</option>
 			<option>aap</option>
-		</select> tenure <select class="form-select"
+		</select> 
+		
+		tenure <select class="form-select"
 			aria-label="Default select example" name="tenure">
 			<option value="">select tenure</option>
 			<option>1</option>
