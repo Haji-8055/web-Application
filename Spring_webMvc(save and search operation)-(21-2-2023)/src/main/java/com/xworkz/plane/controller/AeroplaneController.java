@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.xworkz.plane.dto.AeroplaneDTO;
 import com.xworkz.plane.service.AeroplaneService;
@@ -57,7 +58,20 @@ public class AeroplaneController {
 		return "AeroplaneSuccess";
 	}
 
-	public String onSearch(int id, Model model) {
+	@GetMapping("/search")
+	public String onSearch(@RequestParam int id, Model model) {
+		
+	AeroplaneDTO dto=service.findById(id);
+	if(dto!=null) {
+		model.addAttribute("dto", dto);
 		return "AeroplaneSearch";
+
+	}
+	else {
+		model.addAttribute("message", "*****data not found");
+		return "AeroplaneSearch";
+
+	}
+		
 	}
 }

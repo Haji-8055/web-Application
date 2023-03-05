@@ -18,6 +18,7 @@ public class HttpMethodsServlet extends HttpServlet {
 		System.out.println("created HttpMethodsServlet using default constructor...");
 	}
 
+	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		System.out.println("running do get method.....");

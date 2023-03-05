@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet(loadOnStartup = 2, urlPatterns = "/vroom")
 public class BikeServlet extends HttpServlet {
+	
 
 	public BikeServlet() {
 		System.out.println("created bike using servlet......");
@@ -20,6 +21,7 @@ public class BikeServlet extends HttpServlet {
 
 		System.out.println("running do get....");
 	}
+	
 	
 
 }
