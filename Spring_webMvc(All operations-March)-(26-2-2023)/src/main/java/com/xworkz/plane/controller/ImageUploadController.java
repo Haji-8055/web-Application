@@ -53,11 +53,10 @@ public class ImageUploadController {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
 		return "ImageUpload";
 	}
 
-	@GetMapping("/download")
+	@GetMapping("/display")
 	public void onDownload(HttpServletResponse response, @RequestParam String fileName) throws IOException {
 		response.setContentType("image/jpeg");
 		File file = new File("E:\\coffee-images\\" + fileName);

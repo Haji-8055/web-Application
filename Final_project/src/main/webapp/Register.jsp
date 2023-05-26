@@ -86,7 +86,7 @@ Confirmpassword<input class="form-control form-control-lg" type="password"  name
 </form>
 
 
-<script >
+<script>
 
 function onUser() {
 	console.log("running onUser")
@@ -120,8 +120,6 @@ function onUser() {
 	
 	document.getElementById('nameError').innerHTML='Invalid userId, please enter min 3 and max 30';
 	}
-	
-	
 	
 }
 
@@ -199,10 +197,6 @@ function onContact() {
 		document.getElementById('contactError').innerHTML='invalid number , please enter min 5 and max 11'
 	}
 	
-	
-}
-
-
 	
 }
 
