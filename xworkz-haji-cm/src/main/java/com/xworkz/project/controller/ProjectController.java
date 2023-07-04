@@ -177,6 +177,7 @@ public class ProjectController {
 
 	@GetMapping("/updateProfile")
 	public String getProfileUpdate(@RequestParam String userId, Model model) {
+		log.info("running update profile get mapping method.........");
 
 		ProjectDTO dto = service.findByUserId(userId);
 		model.addAttribute("dto", dto);
@@ -185,7 +186,7 @@ public class ProjectController {
 
 	@PostMapping("/updateProfile")
 	public String OnProfileUpdate(@RequestParam MultipartFile image, String email, String userId, Long mobileNumber,
-			Model model) {
+			Model model, HttpServletRequest request) {
 		ProjectDTO dto = service.findByEmailId(email);
 
 		if (image.isEmpty()) {
@@ -197,18 +198,26 @@ public class ProjectController {
 
 			// Get the file and save it somewhere
 			byte[] bytes = image.getBytes();
-			Path path = Paths.get("E:\\coffee-images\\" + userId + System.currentTimeMillis() + image.getOriginalFilename());
+			Path path = Paths
+					.get("E:\\coffee-images\\" + userId + System.currentTimeMillis() + image.getOriginalFilename());
 			Files.write(path, bytes);
 			dto.setPicName(path.getFileName().toString());
 			dto.setUserId(userId);
 			dto.setMobileNumber(mobileNumber);
+			
 			service.UpdateProfile(dto);
+			
 			System.out.println(
 					"=====================================================================" + dto.getPicName());
 
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		HttpSession HttpSession = request.getSession(true);
+
+		HttpSession.setAttribute("userId", dto.getUserId());
+		HttpSession.setAttribute("userImage", dto.getPicName());
+		model.addAttribute("dto", dto);
 		model.addAttribute("updateSuccess", "profile updated successfully");
 		return "UpdateProfile";
 	}

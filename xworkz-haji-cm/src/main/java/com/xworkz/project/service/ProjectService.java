@@ -26,10 +26,10 @@ public interface ProjectService {
 	
 	boolean UpdateProfile(ProjectDTO dto);
 	
-	public void expireOTP();
 	
 	ProjectDTO findByEmailId(String email);
-
+	
+	public void expireOTP();
 	
 	
 

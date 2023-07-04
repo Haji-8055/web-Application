@@ -67,7 +67,7 @@
 			name="userId" onblur="onUser()" value="${dto.userId}"> <span
 			id="nameError" style="color: red"></span> <br>
 			
-			email<input class="form-control form-control-lg" type="	" name="email" id="mail" onchange="onEmail()" value="${dto.email}" /> <span
+			email<input class="form-control form-control-lg" type="email" name="email" id="mail" onchange="onEmail()" value="${dto.email}" /> <span
 			id="mailError" style="color: red"></span><br> 
 			
 			
@@ -84,8 +84,9 @@
 		<span id="passwordError" style="color: red"></span><br>
 		
 		<br>
-        <input type="checkbox" id="agreement" onclick="onPassword()">Accept Agreement
-		 <br> <input type="submit" id="submitId" disabled="disabled" class="btn btn-dark btn-lg"/>
+        <input type="checkbox" id="agreement" onclick="onAgreement()"> Accept Agreement <br> 
+        
+        <input type="submit" id="submitId" disabled="disabled" class="btn btn-dark btn-lg"/>
 
 
 	 		</form>
@@ -98,6 +99,7 @@
 
 
 		
+		
 		function onUser() {
 			console.log("running onUser")
 			var userInput = document.getElementById('Id');
@@ -105,10 +107,11 @@
 			console.log(userValue);
 			if (userValue != null && userValue != "" && userValue.length > 3
 					&& userValue.length < 30) {
-				
+				var agreement = document.getElementById('agreement');
+
 				console.log('valid user');
 				document.getElementById('nameError').innerHTML = '';
-				
+
 				if (agreement.checked) {
 					document.getElementById('submitId').disabled = false;
 				}
@@ -116,7 +119,7 @@
 				const xhttp = new XMLHttpRequest();
 				console.log('running in ajax');
 				xhttp.open("GET",
-						"http://localhost:8082/xworkz-haji-cm/uniqueUser/"
+						"http://localhost:8080/xworkz-haji-cm/uniqueUser/"
 								+ userValue);
 				xhttp.send();
 
@@ -151,7 +154,7 @@
 					&& mailsValue.length < 30) {
 				console.log('valid email');
 				document.getElementById('mailError').innerHTML = '';
-				
+
 				if (agreement.checked) {
 					document.getElementById('submitId').disabled = false;
 				}
@@ -159,7 +162,7 @@
 				const xhttp = new XMLHttpRequest();
 				console.log('running in ajax');
 				xhttp.open("GET",
-						"http://localhost:8082/xworkz-haji-cm/uniqueEmail/"
+						"http://localhost:8080/xworkz-haji-cm/uniqueEmail/"
 								+ mailsValue);
 				xhttp.send();
 
@@ -199,7 +202,7 @@
 				const xhttp = new XMLHttpRequest();
 				console.log('running in ajax');
 				xhttp.open("GET",
-						"http://localhost:8082/xworkz-haji-cm/uniqueNumber/"
+						"http://localhost:8080/xworkz-haji-cm/uniqueNumber/"
 								+ mobileValue);
 				xhttp.send();
 
@@ -244,8 +247,6 @@
 					document.getElementById('submitId').disabled = false;
 				}
 				document.getElementById('passwordError').innerHTML = '';
-	
-				
 
 				if (cValue != pValue) {
 					document.getElementById('passwordError').innerHTML = 'Invalid password,please confirm the entered password,';
@@ -262,21 +263,29 @@
 			}
 
 		}
-		
-		
-		function showPassword() {
-			  var x = document.getElementById("secure");
-			  if (x.type === "password") {
-			    x.type = "text";
-			  } else {
-			    x.type = "password";
-			  }
-			}
-		
-		
-		
+
+		function onAgreement() {
+
+			var agrement = document.getElementById('agreement');
+			console.log(agrement.checked);
+			if (agrement.checked) {
 				
-		
+				document.getElementById('submitId').disabled = false;
+
+			} else {
+				document.getElementById('submitId').disabled = 'disabled';
+			}
+
+		}
+
+		function showPassword() {
+			var x = document.getElementById("secure");
+			if (x.type === "password") {
+				x.type = "text";
+			} else {
+				x.type = "password";
+			}
+		}
 	</script>
 </body>
 </html>

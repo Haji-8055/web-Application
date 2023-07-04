@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <configuration>
+
 	<appender name="STDOUT"
 		class="ch.qos.logback.core.ConsoleAppender">
 		<encoder>
@@ -8,6 +9,7 @@
 			</pattern>
 		</encoder>
 	</appender>
+	
 	<appender name="FILE" class="ch.qos.logback.core.FileAppender">
 		<file>E:/xworkz-logs/projectLogs.log</file>
 		<encoder
@@ -17,6 +19,7 @@
 			</Pattern>
 		</encoder>
 	</appender>
+	
 	<root level="INFO">
 		<appender-ref ref="STDOUT" />
 		<appender-ref ref="FILE" />

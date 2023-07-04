@@ -2,29 +2,38 @@ package com.xworkz.project.entity;
 
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
 @Entity
 @NoArgsConstructor
-@Data
+@Setter
+@Getter
 @Table(name = "projectUserDetails")
 @NamedQuery(name = "fetchAll", query = "select entity from ProjectEntity entity")
-@NamedQuery(name = "SignInCheck", query = "select entity from ProjectEntity entity where entity.userId=:user")
+@NamedQuery(name = "findByUserID", query = "select entity from ProjectEntity entity where entity.userId=:user")
 @NamedQuery(name = "expireOTP", query = "update ProjectEntity entity set entity.otpExpired=:boolean where entity.otpRequestedTime<=:currentTime")
 @NamedQuery(name = "findByEmailId", query = "select entity from ProjectEntity entity where entity.email=:email")
 
 public class ProjectEntity {
+	
 	@Id
-	@Column(name = "p_signUpId")
-	private int signUpId;
+	@Column(name = "id")
+	private int id;
 
 	@Column(name = "p_userId")
 	private String userId;
@@ -65,6 +74,9 @@ public class ProjectEntity {
 	
 	@Column(name = "profile_pic_name")
 	private String picName;
+	
+	@OneToMany(mappedBy = "projectEntity",fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+	private List<CarsEntity> carsEntities;
 	
 
 }

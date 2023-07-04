@@ -2,21 +2,24 @@ package com.xworkz.project.dto;
 
 
 import java.time.LocalTime;
+import java.util.List;
 
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import com.xworkz.project.entity.CarsEntity;
+
 import lombok.Data;
 
 @Data
 public class ProjectDTO {
 
-	private int signUpId;
+	private int id;
 
 	@NotNull
-	@Size(min = 4, max = 14, message = "email should be greater than 4 and less than 14")
+	@Size(min = 4, max = 14, message = "userId should be greater than 4 and less than 14")
 	private String userId;
 
 	@NotNull
@@ -45,6 +48,11 @@ public class ProjectDTO {
 	private Boolean otpExpired;
 
 	private String picName;
+	
+	private List<CarsEntity> carsEntities;
+
+	
+
 
 
 }

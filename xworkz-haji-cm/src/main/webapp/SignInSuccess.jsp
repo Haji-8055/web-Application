@@ -25,10 +25,10 @@
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 					<li class="nav-item"><a class="nav-link active"
-						aria-current="page" href="SignUp.jsp">SignUp</a></li>
+						aria-current="page" href="index.jsp">logout</a></li>
 
 					<li class="nav-item"><a class="nav-link active"
-						aria-current="page" href="index.jsp">Home</a></li>
+						aria-current="page" href="#">Home</a></li>
 
 				</ul>
 
@@ -53,6 +53,7 @@
 		</div>
 	</nav>
 	
+	
 	<nav class="navbar bg-light">
 
   <!-- Links -->
@@ -61,10 +62,10 @@
       <a class="nav-link" href="updateProfile?userId=${userId}">UpdateProfile</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="#">Link 2</a>
+      <a class="nav-link" href="AddCars.jsp">Add cars</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="#">Link 3</a>
+      <a class="nav-link" href="ViewCars?userId=${userId}" >view cars</a>
     </li>
   </ul>
 

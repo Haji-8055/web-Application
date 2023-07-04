@@ -35,10 +35,10 @@
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 					<li class="nav-item"><a class="nav-link active"
-						aria-current="page" href="index.jsp">Home</a></li>
+						aria-current="page" href="SignInSuccess.jsp">Home</a></li>
 						
 						<li class="nav-item"><a class="nav-link active"
-						aria-current="page" href="SignIn.jsp">SignIn</a></li>
+						aria-current="page" href="#"></a>about</li>
 						
 
 				</ul>
@@ -49,7 +49,7 @@
 	</nav>
 
 	
-	<h3 style="color: green">${updateSuccess }</h3>
+		<h3 style="color: green">${updateSuccess }</h3>
 
 
 	
@@ -103,7 +103,7 @@ email<input class="form-control form-control-lg" type="email" name="email" id="m
 				const xhttp = new XMLHttpRequest();
 				console.log('running in ajax');
 				xhttp.open("GET",
-						"http://localhost:8082/xworkz-haji-cm/uniqueUser/"
+						"http://localhost:8080/xworkz-haji-cm/uniqueUser/"
 								+ userValue);
 				xhttp.send();
 
@@ -142,7 +142,7 @@ email<input class="form-control form-control-lg" type="email" name="email" id="m
 				const xhttp = new XMLHttpRequest();
 				console.log('running in ajax');
 				xhttp.open("GET",
-						"http://localhost:8082/xworkz-haji-cm/uniqueNumber/"
+						"http://localhost:8080/xworkz-haji-cm/uniqueNumber/"
 								+ mobileValue);
 				xhttp.send();
 

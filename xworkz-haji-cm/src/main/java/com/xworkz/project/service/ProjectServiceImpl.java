@@ -50,6 +50,15 @@ public class ProjectServiceImpl implements ProjectService {
 	public ProjectServiceImpl() {
 		log.info("created " + getClass().getSimpleName());
 	}
+	
+	@Async
+	@Scheduled(fixedDelay = 1000, initialDelay = 1000)
+	@Override
+	public void expireOTP() {
+
+		repo.expireOTP();
+
+	}
 
 	@Override
 	public Set<ConstraintViolation<ProjectDTO>> validateAndSave(ProjectDTO dto) {
@@ -117,6 +126,8 @@ public class ProjectServiceImpl implements ProjectService {
 			log.info("password matched ??" + passwordMatch);
 
 			if (passwordMatch == true) {
+				entity.setSignInCount(0);
+				repo.updateEntity(entity);
 				return "";
 			} else {
 				Integer count = entity.getSignInCount();
@@ -140,7 +151,7 @@ public class ProjectServiceImpl implements ProjectService {
 		String portNumber = "587";
 		String hostName = "smtp.office365.com";
 		String fromEmail = "murtuza662@outlook.com";
-		String password = "888666777s";
+		String password = "Haji@7019";
 		String to = email;
 
 		Properties prop = System.getProperties();
@@ -190,7 +201,7 @@ public class ProjectServiceImpl implements ProjectService {
 			if (entity.getEmail().equalsIgnoreCase(email)) {
 
 				String randomPassword = generateRandomPassword();
-				log.info("randomly generated password ===========" + randomPassword);
+				log.info("randomly generated password ===========****************************" + randomPassword);
 
 				boolean emailSent = sendMail(email, "your temporary password for forgot password", randomPassword);
 				log.info("Email sent to user ??" + emailSent);
@@ -241,7 +252,7 @@ public class ProjectServiceImpl implements ProjectService {
 
 	@Override
 	public ProjectDTO findByUserId(String userId) {
-		log.info("running findByUserId in ProjectServiceImpl.........");
+		log.info("running findByUserId in ProjectServiceImpl for ........."+userId);
 
 		ProjectEntity entity = repo.findByUserID(userId);
 
@@ -269,14 +280,7 @@ public class ProjectServiceImpl implements ProjectService {
 
 	}
 
-	@Async
-	@Scheduled(fixedDelay = 1000, initialDelay = 1000)
-	@Override
-	public void expireOTP() {
-
-		repo.expireOTP();
-
-	}
+	
 
 	@Override
 	public ProjectDTO findByEmailId(String email) {
@@ -307,6 +311,7 @@ public class ProjectServiceImpl implements ProjectService {
 		entity.setOtpRequestedTime(null);
 
 		repo.updateEntity(entity);
+		
 		return true;
 	}
 

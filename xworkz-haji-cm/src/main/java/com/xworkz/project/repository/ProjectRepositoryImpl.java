@@ -25,15 +25,19 @@ public class ProjectRepositoryImpl implements ProjectRepository {
 	@Override
 	public boolean save(ProjectEntity entity) {
 		log.info("running save in ProjectRepositoryImpl.....");
-
+		
 		EntityManager manager = factory.createEntityManager();
-		EntityTransaction transaction = manager.getTransaction();
-		transaction.begin();
-		manager.persist(entity);
-		transaction.commit();
-		manager.close();
-		return true;
 
+		try {
+			EntityTransaction transaction = manager.getTransaction();
+			transaction.begin();
+			manager.persist(entity);
+			transaction.commit();
+			return true;
+
+		} finally {
+			manager.close();
+			}
 	}
 
 	@Override
@@ -59,10 +63,11 @@ public class ProjectRepositoryImpl implements ProjectRepository {
 
 		EntityManager manager = this.factory.createEntityManager();
 		try {
-			Query query = manager.createNamedQuery("SignInCheck");
+			Query query = manager.createNamedQuery("findByUserID");
 			query.setParameter("user", userId);
 			Object obj = query.getSingleResult();
 			ProjectEntity entity = (ProjectEntity) obj;
+			log.info(" data found for ================"+userId +" as " +entity.toString());
 
 			return entity;
 		} catch (Exception e) {
@@ -80,12 +85,15 @@ public class ProjectRepositoryImpl implements ProjectRepository {
 	public boolean updateEntity(ProjectEntity entity) {
 		log.info("running updateEntity in ProjectRepositoryImpl.....");
 		EntityManager manager = factory.createEntityManager();
-		EntityTransaction transaction = manager.getTransaction();
-		transaction.begin();
-		manager.merge(entity);
-		transaction.commit();
-		manager.close();
-		return true;
+		try {
+			EntityTransaction transaction = manager.getTransaction();
+			transaction.begin();
+			manager.merge(entity);
+			transaction.commit();
+			return true;
+		} finally {
+			manager.close();
+		}
 	}
 
 	@Override
@@ -94,14 +102,17 @@ public class ProjectRepositoryImpl implements ProjectRepository {
 //		log.info("running expireOTP in ProjectRepositoryImpl.....");
 
 		EntityManager manager = factory.createEntityManager();
-		EntityTransaction transaction = manager.getTransaction();
-		transaction.begin();
-		Query query = manager.createNamedQuery("expireOTP");
-		query.setParameter("boolean", true);
-		query.setParameter("currentTime", LocalTime.now());
-		query.executeUpdate();
-		transaction.commit();
-		manager.close();
+		try {
+			EntityTransaction transaction = manager.getTransaction();
+			transaction.begin();
+			Query query = manager.createNamedQuery("expireOTP");
+			query.setParameter("boolean", true);
+			query.setParameter("currentTime", LocalTime.now());
+			query.executeUpdate();
+			transaction.commit();
+		} finally {
+			manager.close();
+		}
 
 	}
 
@@ -115,6 +126,8 @@ public class ProjectRepositoryImpl implements ProjectRepository {
 			query.setParameter("email", email);
 			Object obj = query.getSingleResult();
 			ProjectEntity entity = (ProjectEntity) obj;
+			
+			log.info(" data found for ================" + entity);
 
 			return entity;
 		} catch (Exception e) {
