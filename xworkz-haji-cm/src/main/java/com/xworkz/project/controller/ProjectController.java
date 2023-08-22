@@ -18,10 +18,7 @@ import javax.servlet.http.HttpSession;
 import javax.validation.ConstraintViolation;
 
 import org.apache.tomcat.util.http.fileupload.IOUtils;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpRequest;
-import org.springframework.http.server.ServerHttpResponse;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -31,7 +28,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.xworkz.project.dto.ProjectDTO;
-import com.xworkz.project.entity.ProjectEntity;
 import com.xworkz.project.service.ProjectService;
 
 import lombok.extern.slf4j.Slf4j;

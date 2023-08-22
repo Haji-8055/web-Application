@@ -75,11 +75,14 @@ public class ProjectServiceImpl implements ProjectService {
 
 		log.info("no violations present,data can be saved");
 		ProjectEntity entity = new ProjectEntity();
+		
 		BeanUtils.copyProperties(dto, entity);
+		
 		entity.setCreatedBy(dto.getUserId());
 		String encodedPassword = encoder.encode(dto.getPassword());
 		entity.setPassword(encodedPassword);
 		entity.setOtpExpired(false);
+		
 		boolean saved = repo.save(entity);
 		log.info("data saved : " + saved);
 		boolean mailSent = sendMail(dto.getEmail(), "registration completed", "thanks for registering!!!..");

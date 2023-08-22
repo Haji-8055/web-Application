@@ -52,6 +52,7 @@ public class CarsServiceImpl implements CarsService {
 		int id=entity.getId();
 		
 		List<CarsEntity> list=carsRepo.findCar(param,id);
+		
 		return list;
 	}
 

@@ -42,7 +42,7 @@
 					<div class="navbar-brand" > 
 					
 					
-				 	<img  src="display?fileName=${userImage}" height="80" width="80">
+				 	<img  src="display?fileName=${userImage}" height="80" width="80" style="border-radius: 50%">
 						
 					</div>
 					
