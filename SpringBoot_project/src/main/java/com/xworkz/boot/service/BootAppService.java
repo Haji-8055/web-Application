@@ -1,9 +1,9 @@
 package com.xworkz.boot.service;
 
-import com.xworkz.boot.entity.BootAppEntity;
+import com.xworkz.boot.dto.BootAppDTO;
 
 public interface BootAppService {
 	
-	public boolean onSave(BootAppEntity entity);
+	public boolean onSave(BootAppDTO appDTO);
 
 }

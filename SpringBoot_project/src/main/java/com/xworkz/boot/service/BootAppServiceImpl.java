@@ -1,8 +1,10 @@
 package com.xworkz.boot.service;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.xworkz.boot.dto.BootAppDTO;
 import com.xworkz.boot.entity.BootAppEntity;
 import com.xworkz.boot.repository.BootAppRepo;
 
@@ -13,8 +15,13 @@ public class BootAppServiceImpl implements BootAppService {
 	BootAppRepo repo;
 
 	@Override
-	public boolean onSave(BootAppEntity entity) {
-		repo.save(entity);
+	public boolean onSave(BootAppDTO appDTO) {
+		
+		BootAppEntity appEntity = new BootAppEntity();
+
+		BeanUtils.copyProperties(appDTO, appEntity);
+
+		repo.save(appEntity);
 		return true;
 	}
 

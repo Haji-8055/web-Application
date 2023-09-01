@@ -1,6 +1,5 @@
 package com.xworkz.boot.controller;
 
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.xworkz.boot.dto.BootAppDTO;
-import com.xworkz.boot.entity.BootAppEntity;
 import com.xworkz.boot.service.BootAppService;
 
 import lombok.extern.slf4j.Slf4j;
@@ -34,16 +32,14 @@ public class BootAppController {
 		appDTO.setName("haji");
 		appDTO.setClg("BGMIT");
 		appDTO.setMobileNo(7019406887l);
+		
 		return appDTO;
 	}
 
-	@PostMapping(value = "/save",produces = MediaType.APPLICATION_JSON_VALUE)
-	
+	@PostMapping(value = "/save",consumes = MediaType.APPLICATION_JSON_VALUE)
 	public boolean onSave(@RequestBody BootAppDTO appDTO) {
-		BootAppEntity appEntity = new BootAppEntity();
-
-		BeanUtils.copyProperties(appDTO, appEntity);
-		appService.onSave(appEntity);
+		
+		appService.onSave(appDTO);
 
 		return true;
 	}
