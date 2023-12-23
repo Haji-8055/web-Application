@@ -51,14 +51,14 @@ public class ProjectServiceImpl implements ProjectService {
 		log.info("created " + getClass().getSimpleName());
 	}
 	
-	@Async
-	@Scheduled(fixedDelay = 1000, initialDelay = 1000)
-	@Override
-	public void expireOTP() {
-
-		repo.expireOTP();
-
-	}
+//	@Async
+//	@Scheduled(fixedDelay = 1000, initialDelay = 1000)
+//	@Override
+//	public void expireOTP() {
+//
+//		repo.expireOTP();
+//
+//	}
 
 	@Override
 	public Set<ConstraintViolation<ProjectDTO>> validateAndSave(ProjectDTO dto) {

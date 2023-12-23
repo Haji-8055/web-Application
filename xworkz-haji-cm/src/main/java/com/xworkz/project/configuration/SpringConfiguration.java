@@ -17,7 +17,7 @@ import lombok.extern.slf4j.Slf4j;
 @Configuration
 @ComponentScan("com.xworkz.project")
 @Slf4j
-@EnableScheduling
+//@EnableScheduling
 public class SpringConfiguration {
 
 	public SpringConfiguration() {

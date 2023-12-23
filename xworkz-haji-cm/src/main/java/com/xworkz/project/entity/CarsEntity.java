@@ -16,7 +16,7 @@ import lombok.Setter;
 @Table(name = "cars_list")
 @Setter
 @Getter
-@NamedQuery(name = "onSearchCar",query = "select entity from CarsEntity entity where entity.carCompany=:param or entity.carName=:param and entity.id=:id")
+@NamedQuery(name = "onSearchCar",query = "select entity from CarsEntity entity where entity.carCompany=:param or entity.carName=:param and entity.carsId=:id")
 public class CarsEntity {
 
 	@Id

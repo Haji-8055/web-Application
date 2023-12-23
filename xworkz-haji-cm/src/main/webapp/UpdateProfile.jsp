@@ -55,6 +55,7 @@
 	
 
 	<div class="col-sm-3" style="margin: 80px 550px">
+	
 	<form action="updateProfile" method="post" enctype="multipart/form-data" class="bg-info container pt-9 border border-5 border border-dark">
 
 email<input class="form-control form-control-lg" type="email" name="email" id="mail" onchange="onEmail()" value="${dto.email}" readonly="readonly"/> <span

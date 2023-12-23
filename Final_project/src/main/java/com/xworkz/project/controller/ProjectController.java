@@ -23,6 +23,7 @@ public class ProjectController {
 
 	public ProjectController() {
 		log.info("created : " + this.getClass().getSimpleName());
+		log.info("hghfghb");
 
 	}
 

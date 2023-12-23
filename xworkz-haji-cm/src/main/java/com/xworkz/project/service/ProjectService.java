@@ -29,7 +29,7 @@ public interface ProjectService {
 	
 	ProjectDTO findByEmailId(String email);
 	
-	public void expireOTP();
+//	public void expireOTP();
 	
 	
 

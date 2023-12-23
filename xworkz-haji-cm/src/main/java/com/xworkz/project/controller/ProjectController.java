@@ -194,10 +194,11 @@ public class ProjectController {
 
 			// Get the file and save it somewhere
 			byte[] bytes = image.getBytes();
-			Path path = Paths
-					.get("E:\\coffee-images\\" + userId + System.currentTimeMillis() + image.getOriginalFilename());
+			Path path = Paths.get("E:\\coffee-images\\" + userId + System.currentTimeMillis() + image.getOriginalFilename());
 			Files.write(path, bytes);
+			
 			dto.setPicName(path.getFileName().toString());
+			
 			dto.setUserId(userId);
 			dto.setMobileNumber(mobileNumber);
 			
@@ -222,8 +223,8 @@ public class ProjectController {
 	public void onDownload(HttpServletResponse response, @RequestParam String fileName, ProjectDTO dto)
 			throws IOException {
 
-		Path path = Paths.get("E:\\coffee-images\\" + dto.getPicName());
-		path.toFile();
+//		Path path = Paths.get("E:\\coffee-images\\" + dto.getPicName());
+//		path.toFile();
 		response.setContentType("image/jpeg");
 		File file = new File("E:\\coffee-images\\" + fileName);
 		InputStream in = new BufferedInputStream(new FileInputStream(file));

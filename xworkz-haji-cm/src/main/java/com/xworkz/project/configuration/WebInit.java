@@ -3,11 +3,12 @@ package com.xworkz.project.configuration;
 import java.io.File;
 
 import javax.servlet.MultipartConfigElement;
-import javax.servlet.ServletRegistration.Dynamic;
 
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
+
+import com.fasterxml.jackson.databind.ser.std.StdKeySerializers.Dynamic;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -37,15 +38,10 @@ public class WebInit extends AbstractAnnotationConfigDispatcherServletInitialize
 
 	}
 
-	@Override
-	public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
-
-		configurer.enable();
-	}
+	
 	
 	@Override
-	protected void customizeRegistration(Dynamic registration) {
-
+	protected void customizeRegistration(javax.servlet.ServletRegistration.Dynamic registration) {
 		int maxUploadSizeInMb = 5 * 1024 * 1024; // 5 MB
 		String tempDir = "E:\\temp";
 		File uploadDirectory = new File(tempDir);
@@ -56,4 +52,6 @@ public class WebInit extends AbstractAnnotationConfigDispatcherServletInitialize
 		registration.setMultipartConfig(multipartConfigElement);
 	}
 
+	
+	
 }
